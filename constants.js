@@ -5,6 +5,10 @@ var Constants = Constants || {
     COMMON_SPLIT_STR: "|",
     snapShotTime: 120,          // 定时上传截图到cos时间间隔120s
     TimeTick: 15,               // 系统tick时间15s
+    imageURL: "http://192.168.100.121/",
+    cloudURL: "http://192.168.100.121/",
+    serverId: 1,
+    systemId: 8,
 
     SYSTEM_EVENT: {
         // 系统相关

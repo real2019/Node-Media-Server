@@ -57,7 +57,7 @@ class SnapShotServer {
                 let dest_path = _this.sysConf.LocalImagePath + file.streamName + "/" + fileName;
                 fs.copyFileSync(file.filePath, dest_path);
 
-                let url = "http://192.168.100.121/" + file.streamName + "/" + fileName;
+                let url = Constants.imageURL + file.streamName + "/" + fileName;
                 return resolve(url);
             }).catch(function(error) {
                 logger.debug("_uploadToCosLocal error:", error);
@@ -72,17 +72,17 @@ class SnapShotServer {
             let _this = this;
             co(function*() {
                 let req = {
-                    server_id: _this.conf.serverId,
+                    server_id: Constants.serverId,
                     nonce: uuid.v4(),
                     time_stamp: moment().unix(),
                     data: JSON.stringify(files),
-                    system_id: _this.conf.systemId,
+                    system_id: Constants.systemId,
                 }
                 let signStr = _this.protocolSign.getSignString(req);
                 _.assign(req, {sign: signStr});
 
                 var options = {
-                    "url": _this.sysConf.cloudURL + "/web/base/commitCosUrl",
+                    "url": Constants.cloudURL + "/web/base/commitCosUrl",
                     "method": "POST",
                     headers: {
                         'Content-Type': 'application/json'
@@ -113,7 +113,7 @@ class SnapShotServer {
             let _this = this;
             co(function*() {
                 // 遍历目录，获取上传文件列表
-                let files = _this.snapShotUtils.getDirFiles("/home/qcjk/img/");
+                let files = _this.snapShotUtils.getDirFiles(Constants.imagePath);
                 while(files && files.length > 0) {
                     let cache = _.slice(files, 0, _this.batch_count);
                     let request_array = [];
@@ -121,11 +121,7 @@ class SnapShotServer {
                     // 上传
                     for (let item of cache) {
                         let request_obj = null;
-                        if (_this.sysConf.isLocal === 1) {
-                            request_obj = _this._uploadToCosLocal(item);
-                        } else {
-                            request_obj = _this._uploadToCos(item);
-                        }
+                        request_obj = _this._uploadToCosLocal(item);
                         if (request_obj)
                             request_array.push(request_obj);
                     }
