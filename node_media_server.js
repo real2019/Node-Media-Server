@@ -11,6 +11,7 @@ const NodeHttpServer = require('./node_http_server');
 const NodeTransServer = require('./node_trans_server');
 const NodeRelayServer = require('./node_relay_server');
 const NodeFissionServer = require('./node_fission_server');
+const SnapShotServer = require("./snap_shot_server");
 const context = require('./node_core_ctx');
 const Package = require("./package.json");
 
@@ -22,6 +23,10 @@ class NodeMediaServer {
   run() {
     Logger.setLogType(this.config.logType);
     Logger.log(`Node Media Server v${Package.version}`);
+    // 开启截图上报功能
+    this.snapshot = new SnapShotServer();
+    this.snapshot.start();
+
     if (this.config.rtmp) {
       this.nrs = new NodeRtmpServer(this.config);
       this.nrs.run();

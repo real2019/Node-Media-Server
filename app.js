@@ -1,4 +1,5 @@
 const NodeMediaServer = require('./');
+const Constants = require("./constants.js");
 
 const config = {
   rtmp: {
@@ -27,6 +28,18 @@ const config = {
     play: false,
     publish: false,
     secret: 'nodemedia2017privatekey'
+  },
+  trans: {
+    ffmpeg: Constants.ffmpeg,
+    tasks: [
+      {
+        app: 'live',
+        hls: true,
+        hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
+        image: true,
+        imageFlags: 5
+      }
+    ]
   }
 };
 
