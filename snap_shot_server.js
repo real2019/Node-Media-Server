@@ -14,7 +14,7 @@ Promise.promisifyAll(fs);
 
 class SnapShotServer {
     constructor() {
-        logger.debug("SnapShotServer starting...............");
+        logger.log("SnapShotServer starting...............");
 
         this.tickTimer = new SystemTick(Constants.TimeTick);
         let msg = Constants.SYSTEM_EVENT.properties[Constants.SYSTEM_EVENT.TIME_TICK].event;
@@ -26,7 +26,7 @@ class SnapShotServer {
 
     start() {
         this.tickTimer.startTimer();
-        logger.debug("SnapShotServer started...............");
+        logger.log("SnapShotServer started...............");
     }
 
     processTickTimeLocal() {
@@ -40,10 +40,10 @@ class SnapShotServer {
             }).catch(function(error) {
                 _this.currentTick = 0;
 
-                logger.debug("processTickTime error:", error);
+                logger.error("processTickTime error:", error);
             })
         } else {
-            logger.debug("processTickTime:", this.currentTick);
+            logger.log("processTickTime:", this.currentTick);
         }
     }
 
@@ -60,7 +60,7 @@ class SnapShotServer {
                 let url = Constants.imageURL + file.streamName + "/" + fileName;
                 return resolve(url);
             }).catch(function(error) {
-                logger.debug("_uploadToCosLocal error:", error);
+                logger.error("_uploadToCosLocal error:", error);
                 return resolve("");
             })
         })
@@ -89,19 +89,19 @@ class SnapShotServer {
                     },
                     "body": JSON.stringify(req),
                 };
-                logger.debug("options: " + JSON.stringify(options));
+                logger.log("options: " + JSON.stringify(options));
 
                 request(options, function(err, res, body){
                     if (err) {
-                        return logger.debug("commitCosUrl error:", err);
+                        return logger.log("commitCosUrl error:", err);
                     }
-                    logger.debug("body:", body); 
+                    logger.log("body:", body); 
                     let obj = JSON.parse(body);
 
                     return resolve(obj.data);
                 });
             }).catch(function(error) {
-                logger.debug("error:", error);
+                logger.error("error:", error);
                 return resolve(0);
             })
         })
@@ -146,7 +146,7 @@ class SnapShotServer {
 
                     // 提交上传url
                     let commit_count = yield _this._commitCosUrl(commit_cache);
-                    logger.debug("commit_count:", commit_count);
+                    logger.log("commit_count:", commit_count);
 
                     // 删除已经上传成功的本地文件
                     if (commit_count > 0) {
