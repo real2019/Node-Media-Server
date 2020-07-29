@@ -10,6 +10,7 @@ const _ = require("lodash");
 const moment = require("moment");
 const uuid = require("node-uuid");
 const Promise = require("bluebird");
+const request = require("request");
 const fs = require("fs");
 Promise.promisifyAll(fs);
 
