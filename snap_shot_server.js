@@ -22,6 +22,7 @@ class SnapShotServer {
         
         this.snapShotUtils = new SnapShotUtils();
         this.batch_count = 10;
+        this.currentTick = 0;
     }
 
     start() {
