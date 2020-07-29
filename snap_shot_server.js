@@ -4,6 +4,7 @@ const Constants = require("./constants");
 const SnapShotUtils = require("./image/SnapShotUtils");
 const SystemContext = require("./image/systemContext.js");
 const SystemTick = require("./image/tickTimer.js");
+const ProtocolSign = require("./image/protocolSign");
 const co = require("co");
 const _ = require("lodash");
 const moment = require("moment");
@@ -23,6 +24,7 @@ class SnapShotServer {
         this.snapShotUtils = new SnapShotUtils();
         this.batch_count = 10;
         this.currentTick = 0;
+        this.protocolSign = new ProtocolSign();
     }
 
     start() {

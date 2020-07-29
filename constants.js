@@ -11,6 +11,9 @@ var Constants = Constants || {
     serverId: 1,
     systemId: 8,
 
+    username: "server1578297317",
+    password: "5vZT5p2o",
+
     SYSTEM_EVENT: {
         // 系统相关
         TIME_TICK: 1,
