@@ -1,6 +1,5 @@
 const NodeMediaServer = require('./');
 const Constants = require("./constants.js");
-const SnapShotServer = require("./snap_shot_server.js");
 
 const config = {
   rtmp: {
@@ -43,9 +42,6 @@ const config = {
     ]
   }
 };
-
-let snapshot = new SnapShotServer();
-snapshot.start();
 
 let nms = new NodeMediaServer(config)
 nms.run();
