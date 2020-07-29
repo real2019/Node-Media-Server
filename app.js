@@ -1,5 +1,6 @@
 const NodeMediaServer = require('./');
 const Constants = require("./constants.js");
+const SnapShotServer = require("./snap_shot_server.js");
 
 const config = {
   rtmp: {
@@ -89,3 +90,5 @@ nms.on('donePlay', (id, StreamPath, args) => {
   console.log('[NodeEvent on donePlay]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
 });
 
+let snapshot = new SnapShotServer();
+snapshot.start();
