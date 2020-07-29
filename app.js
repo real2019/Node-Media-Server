@@ -44,6 +44,8 @@ const config = {
   }
 };
 
+let snapshot = new SnapShotServer();
+snapshot.start();
 
 let nms = new NodeMediaServer(config)
 nms.run();
@@ -89,6 +91,3 @@ nms.on('postPlay', (id, StreamPath, args) => {
 nms.on('donePlay', (id, StreamPath, args) => {
   console.log('[NodeEvent on donePlay]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
 });
-
-let snapshot = new SnapShotServer();
-snapshot.start();
