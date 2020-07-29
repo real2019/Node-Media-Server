@@ -1,12 +1,13 @@
 var Constants = Constants || {
-    ffmpeg: "/Users/apple/Temp/rtmp/ffmpeg",
+    ffmpeg: "/home/tengits/ffmpeg/ffmpeg",
     imageInterval: 5,
     imagePath: "/Users/apple/nms/img/",
+    nginxPath: "/www/snapshot/",
     COMMON_SPLIT_STR: "|",
     snapShotTime: 120,          // 定时上传截图到cos时间间隔120s
     TimeTick: 15,               // 系统tick时间15s
-    imageURL: "http://192.168.100.121/",
-    cloudURL: "http://192.168.100.121/",
+    imageURL: "http://172.20.91.211/",
+    cloudURL: "http://172.20.91.211/",
     serverId: 1,
     systemId: 8,
 

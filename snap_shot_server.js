@@ -52,9 +52,9 @@ class SnapShotServer {
             let _this = this;
             co(function*() {
                 let fileName = uuid.v4();
-                if (!fs.existsSync(_this.sysConf.LocalImagePath + file.streamName))
-                    fs.mkdirSync(_this.sysConf.LocalImagePath + file.streamName);
-                let dest_path = _this.sysConf.LocalImagePath + file.streamName + "/" + fileName;
+                if (!fs.existsSync(Constants.nginxPath + file.streamName))
+                    fs.mkdirSync(Constants.nginxPath + file.streamName);
+                let dest_path = Constants.nginxPath + file.streamName + "/" + fileName;
                 fs.copyFileSync(file.filePath, dest_path);
 
                 let url = Constants.imageURL + file.streamName + "/" + fileName;
