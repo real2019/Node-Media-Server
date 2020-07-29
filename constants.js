@@ -11,8 +11,8 @@ var Constants = Constants || {
     serverId: 1,
     systemId: 8,
 
-    username: "server1578297317",
-    password: "5vZT5p2o",
+    username: "server1591323265",
+    password: "Bc8GO2Rj",
 
     SYSTEM_EVENT: {
         // 系统相关
