@@ -10,6 +10,7 @@ var Constants = Constants || {
     cloudURL: "http://172.20.92.168:13026",
     serverId: 1,
     systemId: 8,
+    hd_str: "_hd",
 
     username: "server1591323265",
     password: "Bc8GO2Rj",

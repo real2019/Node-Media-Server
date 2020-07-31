@@ -57,7 +57,8 @@ class NodeTransSession extends EventEmitter {
       mapStr += mapDash;
       Logger.log('[Transmuxing DASH] ' + this.conf.streamPath + ' to ' + ouPath + '/' + dashFileName);
     }
-    if (this.conf.image) {
+    // 只有低清流才会截图
+    if (this.conf.image && _.endsWith(this.conf.streamName, Constants.hd_str)) {
       this.conf.imageFlags = this.conf.imageFlags ? this.conf.imageFlags : Constants.imageInterval;
       let image_interval_sec = _.toNumber(this.conf.imageFlags)*60;
       let image_interval = (1.0/image_interval_sec).toFixed(5);
