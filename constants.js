@@ -7,7 +7,7 @@ var Constants = Constants || {
     snapShotTime: 120,          // 定时上传截图到cos时间间隔120s
     TimeTick: 15,               // 系统tick时间15s
     imageURL: "https://172.20.91.23:13050/",
-    cloudURL: "https://172.20.91.23:13026",
+    cloudURL: "http://172.20.91.23:13026",
     serverId: 1,
     systemId: 8,
     hd_str: "_hd",
